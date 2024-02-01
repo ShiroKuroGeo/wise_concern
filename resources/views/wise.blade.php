@@ -44,7 +44,7 @@
                 <div class="col-12 col-xl-4 col-lg-4">
                     <a href="#" class="btn btn-theme btn-info" data-bs-toggle="modal" data-bs-target="#modalFourSeason">Four Seasons Immigration and Study Services</a>
                 </div>
-                <!-- Add selection 'HQ Documentation' and 'Canada Sales' -->
+
                 <div class="col-12 col-xl-4 col-lg-4 d-sm-none">
                     <hr class="my-4">
                 </div>
@@ -56,7 +56,6 @@
                 <div class="col-12 col-xl-2 col-lg-2"></div>
             </div>
 
-            <!-- Modal -->
             <div class="modal fade" id="modalFourSeason">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-dark">
@@ -78,7 +77,6 @@
                 </div>
             </div>
 
-            <!-- Four Season Modal Slip -->
             <div class="modal modal-message fade" id="modalForm">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content text-dark p-5">
@@ -95,16 +93,17 @@
                 </div>
             </div>
 
-            <!-- Wise Modal Slip -->
             <div class="modal modal-message fade" id="modalForWise">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content text-dark p-5">
                         <div class="panel-body">
                             <div class="form-group row mb-3">
-                                <label class="text-center">Wise Immigration Selection</label>
+                                <div class="text-center">
+                                    <img src="{{ asset('img/logo/wiselogo.png') }}" class="img-fluid w-50" width="10" height="10" alt="">
+                                </div>
                                 <div class="col-lg-12 d-flex justify-content-center">
-                                    <a class="btn btn-primary me-5" href="Javascript:;" data-bs-toggle="modal" data-bs-target="#modalWiseImmigrationForJobOrderSlip" >Job Order Slip</a>
-                                    <a class="btn btn-info ms-4" href="Javascript:;" data-bs-toggle="modal" data-bs-target="#modalWiseImmigrationForRequestOrderSlip" >Request Slip</a>
+                                    <a class="btn btn-primary me-5" href="Javascript:;" data-bs-toggle="modal" data-bs-target="#modalWiseImmigrationForJobOrderSlip">Job Order Slip</a>
+                                    <a class="btn btn-info ms-4" href="Javascript:;" data-bs-toggle="modal" data-bs-target="#modalWiseImmigrationForRequestOrderSlip">Request Slip</a>
                                     <!-- <a class="btn btn-primary me-5" href="{{ route('fourseason-order') }}">Job Order Slip</a>
                                     <a class="btn btn-info ms-4" href="{{ route('fourseason-request') }}">Request Slip</a> -->
                                 </div>
@@ -113,14 +112,18 @@
                     </div>
                 </div>
             </div>
-        
-            <!-- Modal for wise immigration for job Order Slip -->
+
             <div class="modal fade" id="modalWiseImmigrationForJobOrderSlip">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-dark">
                         <div class="modal-body py-5">
                             <div class="panel-body">
-                                <label class="text-center" for="exampleInputEmail1">Job Order Slip</label>
+                                <div class="text-center">
+                                    <img src="{{ asset('img/logo/wiselogo.png') }}" class="img-fluid w-50" width="10" height="10" alt="">
+                                    <div class="fst-italic mb-5">
+                                        <label class="text-center" for="exampleInputEmail1">Job Order Slip</label>
+                                    </div>
+                                </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputEmail1">Select a Branch/Department:</label>
                                     <select class="form-control form-select" name="department" id="selectedOrder" onchange="navigateToRouteForOrder()">
@@ -140,13 +143,17 @@
                 </div>
             </div>
 
-            <!-- Modal for wise immigration for Request Slip -->
             <div class="modal fade" id="modalWiseImmigrationForRequestOrderSlip">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-dark">
                         <div class="modal-body py-5">
                             <div class="panel-body">
-                                <label class="text-center" for="exampleInputEmail1">Request Slip</label>
+                                <div class="text-center">
+                                    <img src="{{ asset('img/logo/wiselogo.png') }}" class="img-fluid w-50" width="10" height="10" alt="">
+                                    <div class="fst-italic mb-5">
+                                        <label class="text-center" for="exampleInputEmail1">Request Slip</label>
+                                    </div>
+                                </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputEmail1">Select a Branch/Department:</label>
                                     <select class="form-control form-select" name="department" id="selectedRequest" onchange="navigateToRouteForRequest()">
@@ -169,7 +176,6 @@
         </div>
 
     </div>
-
 
     <script src="{{ asset('js/mainpage/onepageemail.js') }}"></script>
     <script src="{{ asset('js/mainpage/onepagevendor.js') }}"></script>

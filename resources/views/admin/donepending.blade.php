@@ -80,7 +80,7 @@
                             <div class="menu-text">Dashboard</div>
                         </a>
                     </div>
-                    <div class="menu-item py-1 active">
+                    <div class="menu-item py-1">
                         <a href="{{ route('admin-accounts') }}" class="menu-link">
                             <div class="menu-icon">
                                 <i class="fas fa-users" aria-hidden="true"></i>
@@ -156,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="menu-item py-1">
+                    <div class="menu-item py-1 active">
                         <a href="{{ route('admin-request') }}" class="menu-link">
                             <div class="menu-icon">
                                 <i class="fas fa-building"></i>
@@ -177,112 +177,165 @@
         <div class="app-sidebar-bg" data-bs-theme="dark"></div>
         <div class="app-sidebar-mobile-backdrop"><a href="#" data-dismiss="app-sidebar-mobile" class="stretched-link"></a></div>
 
-
-
     </div>
     </div>
-
 
     <div id="content" class="app-content">
 
         <div class="d-flex justify-content-between">
-            <h1 class="page-header">Managed Accounts <small>Users Accounts</small></h1>
-            <button class="btn btn-sm mb-4 btn-primary" href="#addUserAccount" class="btn col-12" data-bs-toggle="modal">Add User Account</button>
-            <div class="modal fade" id="addUserAccount">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Add User Account</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ route('admin-add-accounts') }}" method="post">
-                                @csrf
-                                <div class="form-group row mb-3">
-                                    <label class="col-lg-4 col-form-label form-label" for="fullname">Full Name * :</label>
-                                    <div class="col-lg-8">
-                                        <input class="form-control" type="text" id="name" name="name" placeholder="Enter Name" data-parsley-required="true" />
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-3">
-                                    <label class="col-lg-4 col-form-label form-label" for="fullname">Email * :</label>
-                                    <div class="col-lg-8">
-                                        <input class="form-control" type="email" id="email" name="email" placeholder="Enter Name" data-parsley-required="true" />
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-3">
-                                    <div class="col-lg-8">
-                                        <input class="form-control visually-hidden" type="text" id="role" name="role" value="2" placeholder="Enter Name" data-parsley-required="true" />
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-3">
-                                    <div class="col-lg-8">
-                                        <input class="form-control visually-hidden" type="password" id="password" name="password" value="password" placeholder="Enter Name" data-parsley-required="true" />
-                                    </div>
-                                </div>
-                                <button class="btn visually-hidden" id="onclicksubmit" type="submit">Submit</button>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="javascript:;" class="btn btn-white" data-bs-dismiss="modal">Close</a>
-                            <a href="javascript:;" class="btn btn-success" onclick="document.getElementById('onclicksubmit').click()">Add User</a>
-                        </div>
-                    </div>
-                </div>
+            <h1 class="page-header">Four Seasons <small>Concern and Orders</small></h1>
+            <div class="col-2">
+                <select name="selection" id="selection" class="form-control ">
+                    <option value="2">Concern</option>
+                    <option value="1">Job Order</option>
+                </select>
             </div>
         </div>
 
         <div class="panel panel-inverse">
 
             <div class="panel-heading">
-                <h4 class="panel-title">Employee Concern - Table</h4>
+                <h4 class="panel-title" id="concernTitle">Four Seasons - Table - Concern</h4>
+                <h4 class="panel-title visually-hidden" id="jobOrderTitle">Four Seasons - Table - Job</h4>
                 <div class="panel-heading-btn">
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
                 </div>
             </div>
-
-
             <div class="panel-body">
                 <table id="data-table-default" class="table table-striped table-bordered align-middle w-100 text-nowrap">
-                    <thead>
+
+                    <thead class="first" id="concernTableHead">
                         <tr>
-                            <th width="1%">IDs</th>
+                            <th width="1%">ID's</th>
                             <th width="15%" data-orderable="false">Fullname</th>
                             <th class="text-nowrap">Email</th>
+                            <th class="text-nowrap">Concern</th>
+                            <th class="text-nowrap">Message</th>
+                            <th class="text-nowrap">Priority</th>
                             <th class="text-nowrap">Status</th>
-                            <th class="text-nowrap">Created At</th>
-                            <th width="15%">Action</th>
+                            <th class="text-nowrap">Created</th>
+                            <th width="15%">View Pictures</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach($accounts as $acc)
+                    <thead class="visually-hidden" id="jobOrderTableHead">
+                        <tr>
+                            <th width="1%">ID's</th>
+                            <th width="15%" data-orderable="false">Fullname</th>
+                            <th class="text-nowrap">Email</th>
+                            <th class="text-nowrap">Deadline</th>
+                            <th class="text-nowrap">Priority</th>
+                            <th class="text-nowrap">Status</th>
+                            <th class="text-nowrap">Created</th>
+                            <th width="15%">View Pictures</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody class="first" id="concernTableBody">
+                        @foreach($WiseRequestStatus as $depart)
                         <tr class="odd gradeX">
-                            <td width="1%" class="fw-bold">Accounts {{ str_pad($acc->id, 3, '0', STR_PAD_LEFT) }}</td>
-                            <td>{{ $acc->name }}</td>
-                            <td>{{ $acc->email }}</td>
-                            <td class="{{ $acc->status == 1 ? 'text-primary' : 'text-danger' }}">{{ $acc->status == 1 ? 'Unrestricted' : 'Restricted' }}</td>
-                            <td>{{ \Carbon\Carbon::parse($acc->created_at)->format('l F j Y \a\t\ H:i:s') }}</td>
-                            <td><a href="#modal-dialog" class="btn col-12" data-bs-toggle="modal" data-account-status="{{ $acc->status }}" data-account-id="{{ $acc->id }}" data-account-name="{{ $acc->name }}">{{ $acc->status == 1 ? 'Unrestricted' : 'Restricted' }}</a></td>
+                            <td width="1%" class="fw-bold">Concern {{ str_pad($depart->id, 3, '0', STR_PAD_LEFT) }}</td>
+                            <td>{{ $depart->name }}</td>
+                            <td>{{ $depart->email }}</td>
+                            <td>{{ $depart->concern }}</td>
+                            <td>{{ $depart->message }}</td>
+                            <td>{{ $depart->priority }}</td>
+                            <td class="{{ $depart->status != 1 ? 'text-primary' : 'text-danger' }}">
+                                {{ $depart->status != 1 ? 'Done' : 'Pending' }}
+                                <a href="{{ route('admin-done-request-four', ['value' => $depart->id] ) }}">Change</a>
+                            </td>
+                            <td>{{ \Carbon\Carbon::parse($depart->created_at)->format('l F j Y \a\t H:i:s') }}</td>
+                            <td>
+                                <a href="#concernid{{ $depart->id }}" class="btn col-12" data-bs-toggle="modal">View</a>
+                                <div class="modal fade" id="concernid{{ $depart->id }}">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modal-dialogLabel">Pictures for Concern {{ str_pad($depart->id, 3, '0', STR_PAD_LEFT) }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body row">
+                                                <div id="carouselExample{{ $depart->id }}" class="carousel slide" data-bs-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        @foreach($depart->wiserequestfiles as $key => $picture)
+                                                        <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                                            <img src="{{ asset('storage/' . $picture->pictures) }}" class="d-block w-100" height="450" alt="Picture">
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{ $depart->id }}" data-bs-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Previous</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{ $depart->id }}" data-bs-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Next</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tbody class="visually-hidden" id="jobOrderTableBody">
+                        @foreach($WiseTicketStatus as $depart)
+                        <tr class="odd gradeX">
+                            <td width="1%" class="fw-bold">Concern {{ str_pad($depart->id, 3, '0', STR_PAD_LEFT) }}</td>
+                            <td>{{ $depart->name }}</td>
+                            <td>{{ $depart->email }}</td>
+                            <td>{{ \Carbon\Carbon::parse($depart->deadline)->format('l F j Y') }}</td>
+                            <td>{{ $depart->priority }}</td>
+                            <td class="{{ $depart->status != 1 ? 'text-primary' : 'text-danger' }}">
+                                {{ $depart->status != 1 ? 'Done' : 'Pending' }}
+                                <a href="{{ route('admin-done-order-four', ['value' => $depart->id] ) }}">Change</a>
+                            </td>
+                            <td>{{ \Carbon\Carbon::parse($depart->created_at)->format('l F j Y \a\t H:i:s') }}</td>
+                            <td>
+                                <a href="#ticketid{{ $depart->id }}" class="btn col-12" data-bs-toggle="modal">View</a>
+                                <div class="modal fade" id="ticketid{{ $depart->id }}">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modal-dialogLabel">Pictures for Concern {{ str_pad($depart->id, 3, '0', STR_PAD_LEFT) }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body row">
+                                                <div id="carouselExamples{{ $depart->id }}" class="carousel slide" data-bs-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        @foreach($depart->wiseticketfiles as $key => $picture)
+                                                        <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                                            <img src="{{ asset('storage/' . $picture->pictures) }}" class="d-block w-100" height="450" alt="Picture">
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExamples{{ $depart->id }}" data-bs-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Previous</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExamples{{ $depart->id }}" data-bs-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Next</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-            <div class="modal fade" id="modal-dialog">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body py-5 text-center">
-                            <b> Are you sure want to <span id="account-status"></span> <span id="account-id"></span> ?</b>
-                            <input type="text" name="restrictThisUser" id="restrictThisUser" value="2" class="visually-hidden">
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#" class="btn btn-white" data-bs-dismiss="modal" id="restr">Yes</a>
-                            <a href="javascript:;" class="btn btn-white" data-bs-dismiss="modal">No</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="theme-panel">
@@ -326,25 +379,32 @@
     <script src="{{ asset('plugin/highlight.min.js') }}"></script>
     <script src="{{ asset('plugin/render.highlight.js') }}"></script>
     <script>
-        $('#modal-dialog').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget);
-            var accountId = button.data('account-id');
-            var accountname = button.data('account-name');
-            var accountstatus = button.data('account-status');
+        $(document).ready(function() {
+            $('#selection').on('change', function() {
+                var selectedOption = $(this).val();
 
-            $('#account-id').text(accountname);
-            $('#account-status').text(accountstatus == 1 ? 'unrestricted' : 'restricted');
-            $('#restrictThisUser').val(accountId);
+                if (selectedOption == 1) {
+                    $('#concernTableBody').addClass('visually-hidden');
+                    $('#jobOrderTableBody').removeClass('visually-hidden');
 
-        });
+                    $('#concernTitle').addClass('visually-hidden');
+                    $('#jobOrderTitle').removeClass('visually-hidden');
 
-        $('#restr').click(function() {
-            var currentValue = $('#restrictThisUser').val();
-            var newHref = "{{ route('admin-restric-user', ['value' => ':value']) }}".replace(':value', currentValue);
-            window.location.href = newHref;
+                    $('#concernTableHead').addClass('visually-hidden');
+                    $('#jobOrderTableHead').removeClass('visually-hidden');
+                } else if (selectedOption == 2) {
+                    $('#concernTableBody').removeClass('visually-hidden');
+                    $('#jobOrderTableBody').addClass('visually-hidden');
+
+                    $('#concernTitle').removeClass('visually-hidden');
+                    $('#jobOrderTitle').addClass('visually-hidden');
+
+                    $('#concernTableHead').removeClass('visually-hidden');
+                    $('#jobOrderTableHead').addClass('visually-hidden');
+                }
+            });
         });
     </script>
-
     <script type="9dd2961859eb1e28de60110d-text/javascript">
         window.dataLayer = window.dataLayer || [];
 

@@ -23,7 +23,10 @@
         <div id="header" class="app-header">
 
             <div class="navbar-header">
-                <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-3px">W I S E </b></a>
+                <a href="{{ route('admin-dashboard') }}" class="navbar-brand">
+                    <img src="{{ asset('img/logo/wiselogo.png') }}" alt="">
+                    <b class="me-3px">W I S E </b>
+                </a>
                 <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -42,7 +45,7 @@
                         <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
                             <div class="menu-profile-cover with-shadow"></div>
                             <div class="menu-profile-image">
-                                <img src="../assets/img/user/user-13.jpg" alt />
+                                <img src="{{ asset('img/logo/wiselogo.png') }}" alt />
                             </div>
                             <div class="menu-profile-info">
                                 <div class="d-flex align-items-center">
@@ -191,19 +194,6 @@
                 </div>
 
                 <div class="col-xl-3 col-md-6">
-                    <div class="widget widget-stats bg-orange">
-                        <div class="stats-icon"><i class="fas fa-calendar-day"></i></div>
-                        <div class="stats-info">
-                            <h4>YESTERDAY'S CONCERN</h4>
-                            <p>{{ Count($allYesterdayRequest) }}</p>
-                        </div>
-                        <div class="stats-link">
-                            <a href="{{ route('admin-concern') }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-md-6">
                     <div class="widget widget-stats bg-info">
                         <div class="stats-icon"><i class="fa fa-users"></i></div>
                         <div class="stats-info">
@@ -215,17 +205,29 @@
                         </div>
                     </div>
                 </div>
-
+                
+                <div class="col-xl-3 col-md-6">
+                    <div class="widget widget-stats bg-orange">
+                        <div class="stats-icon"><i class="fas fa-calendar-day"></i></div>
+                        <div class="stats-info">
+                            <h4>Total Daily's Pending</h4>
+                            <p>{{ $dailycountAllPending }}</p>
+                        </div>
+                        <div class="stats-link">
+                            <a href="{{ route('admin-donepending', ['value' => '1']) }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-xl-3 col-md-6">
                     <div class="widget widget-stats bg-red">
                         <div class="stats-icon"><i class="fas fa-calendar-day"></i></div>
                         <div class="stats-info">
-                            <h4>YESTERDAY'S CONCERN</h4>
-                            <p>{{ Count($allYesterdayTicket) }}</p>
+                            <h4>Total Daily's Done</h4>
+                            <p>{{ $dailycountAllDone }}</p>
                         </div>
                         <div class="stats-link">
-                            <a href="{{ route('admin-request') }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                            <a href="{{ route('admin-donepending', ['value' => '2']) }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
                         </div>
                     </div>
                 </div>

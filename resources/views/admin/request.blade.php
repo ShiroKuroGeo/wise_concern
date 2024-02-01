@@ -27,7 +27,10 @@
         <div id="header" class="app-header">
 
             <div class="navbar-header">
-                <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-3px">W I S E </b></a>
+                <a href="{{ route('admin-dashboard') }}" class="navbar-brand">
+                    <img src="{{ asset('img/logo/wiselogo.png') }}" alt="">
+                    <b class="me-3px">W I S E </b>
+                </a>
                 <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -46,7 +49,7 @@
                         <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
                             <div class="menu-profile-cover with-shadow"></div>
                             <div class="menu-profile-image">
-                                <img src="../assets/img/user/user-13.jpg" alt />
+                                <img src="{{ asset('img/logo/wiselogo.png') }}" alt />
                             </div>
                             <div class="menu-profile-info">
                                 <div class="d-flex align-items-center">

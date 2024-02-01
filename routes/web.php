@@ -71,3 +71,4 @@ Route::get('/admin/concern/{department?}', [adminController::class, 'concern'])-
 Route::get('/admin/request', [adminController::class, 'request'])->name('admin-request');
 Route::get('/admin/cebudata', [adminController::class, 'getAllCebu'])->name('alldepartmentfromcebu');
 Route::get('/admin', [adminController::class, 'dashboard'])->name('admin-dashboard');
+Route::get('/donepending/{value?}', [adminController::class, 'donepending'])->name('admin-donepending');

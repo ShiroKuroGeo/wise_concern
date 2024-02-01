@@ -82,8 +82,8 @@ class adminController extends Controller
             $dailyTicketAccountingDone = wiseticket::where('department', 'Accounting')->where('status', 2)->whereDay('created_at', now()->day)->get();
 
             //Wise Count Pending and Done Concern and Ticket Daily
-            $countAllPendingDaily = WiseRequest::where('status', 1)->whereDay('created_at', now()->day)->count();
-            $countAllDoneDaily = WiseRequest::where('status', 2)->whereDay('created_at', now()->day)->count();
+            $countAllPendingDaily = WiseRequest::where('status', 1)->whereDay('created_at', now()->day)->count() + wiseticket::where('status', 1)->whereDay('created_at', now()->day)->count();
+            $countAllDoneDaily = WiseRequest::where('status', 2)->whereDay('created_at', now()->day)->count() + wiseticket::where('status', 2)->whereDay('created_at', now()->day)->count();
 
             //Wise Request Month Pending
             $cebu = WiseRequest::where('department', 'Cebu Sales')->where('status', 1)->whereMonth('created_at', now()->month)->get();
@@ -225,8 +225,8 @@ class adminController extends Controller
                 'ticketAccounting' => $ticketAccounting,
 
                 //Wise Yesterdays Concern and Ticket
-                'allYesterdayRequest' => $allYesterdayRequest,
-                'allYesterdayTicket' => $allYesterdayTicket,
+                'allYesterdayRequest' => $countAllPendingDaily,
+                'allYesterdayTicket' => $countAllDoneDaily,
 
                 //Wise Count all Concern and Ticket Month
                 'countRequest' => $countRequest,
@@ -234,6 +234,17 @@ class adminController extends Controller
 
             ]);
         }
+    }
+
+    public function donepending($value){
+        $searchWiseTicketStatus = wiseticket::with('wiseticketfiles')->where('status', $value)->get();
+        $searchWiseRequestStatus = WiseRequest::with('wiserequestfiles')->where('status', $value)->get();
+
+        return view('admin.donepending', [
+            'WiseTicketStatus' => $searchWiseTicketStatus,
+            'WiseRequestStatus' => $searchWiseRequestStatus,
+        ]);
+
     }
 
     public function doneRequestFour($value)
