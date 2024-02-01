@@ -174,11 +174,8 @@
         <div class="app-sidebar-bg" data-bs-theme="dark"></div>
         <div class="app-sidebar-mobile-backdrop"><a href="#" data-dismiss="app-sidebar-mobile" class="stretched-link"></a></div>
 
-
-
     </div>
     </div>
-
 
     <div id="content" class="app-content">
 

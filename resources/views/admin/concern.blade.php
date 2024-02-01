@@ -95,7 +95,7 @@
                         </a>
 
                         <div class="menu-submenu">
-                            <div class="menu-item">
+                            <div class="menu-item {{ request()->url() == route('admin-concern', ['department' => 'Cebu Sales']) ? 'active' : '' }}">
                                 <a href="{{ route('admin-concern', ['department' => 'Cebu Sales']) }}" class="menu-link">
                                     <div class="menu-icon">
                                         <i class="fas fa-building"></i>
@@ -103,7 +103,7 @@
                                     <div class="menu-text">Cebu Sales</div>
                                 </a>
                             </div>
-                            <div class="menu-item">
+                            <div class="menu-item {{ request()->url() == route('admin-concern', ['department' => 'Bohol Sales']) ? 'active' : '' }}">
                                 <a href="{{ route('admin-concern', ['department' => 'Bohol Sales']) }}" class="menu-link">
                                     <div class="menu-icon">
                                         <i class="fas fa-building"></i>
@@ -111,7 +111,7 @@
                                     <div class="menu-text">Bohol Sales</div>
                                 </a>
                             </div>
-                            <div class="menu-item">
+                            <div class="menu-item {{ request()->url() == route('admin-concern', ['department' => 'Makati Sales']) ? 'active' : '' }}">
                                 <a href="{{ route('admin-concern', ['department' => 'Makati Sales']) }}" class="menu-link">
                                     <div class="menu-icon">
                                         <i class="fas fa-building"></i>
@@ -119,7 +119,7 @@
                                     <div class="menu-text">Makati Sales</div>
                                 </a>
                             </div>
-                            <div class="menu-item">
+                            <div class="menu-item {{ request()->url() == route('admin-concern', ['department' => 'Osamiz Sales']) ? 'active' : '' }}">
                                 <a href="{{ route('admin-concern', ['department' => 'Osamiz Sales']) }}" class="menu-link">
                                     <div class="menu-icon">
                                         <i class="fas fa-building"></i>
@@ -127,7 +127,7 @@
                                     <div class="menu-text">Osamiz Sales</div>
                                 </a>
                             </div>
-                            <div class="menu-item">
+                            <div class="menu-item {{ request()->url() == route('admin-concern', ['department' => 'Marketing']) ? 'active' : '' }}">
                                 <a href="{{ route('admin-concern', ['department' => 'Marketing']) }}" class="menu-link">
                                     <div class="menu-icon">
                                         <i class="fas fa-building"></i>
@@ -135,7 +135,7 @@
                                     <div class="menu-text">Marketing</div>
                                 </a>
                             </div>
-                            <div class="menu-item">
+                            <div class="menu-item {{ request()->url() == route('admin-concern', ['department' => 'Human Resource']) ? 'active' : '' }}">
                                 <a href="{{ route('admin-concern', ['department' => 'Human Resource']) }}" class="menu-link">
                                     <div class="menu-icon">
                                         <i class="fas fa-building"></i>
@@ -143,7 +143,7 @@
                                     <div class="menu-text">Human Resource</div>
                                 </a>
                             </div>
-                            <div class="menu-item">
+                            <div class="menu-item {{ request()->url() == route('admin-concern', ['department' => 'Accounting']) ? 'active' : '' }}">
                                 <a href="{{ route('admin-concern', ['department' => 'Accounting']) }}" class="menu-link">
                                     <div class="menu-icon">
                                         <i class="fas fa-building"></i>

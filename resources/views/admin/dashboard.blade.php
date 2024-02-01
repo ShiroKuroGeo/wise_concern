@@ -171,7 +171,6 @@
         <div class="app-sidebar-bg" data-bs-theme="dark"></div>
         <div class="app-sidebar-mobile-backdrop"><a href="#" data-dismiss="app-sidebar-mobile" class="stretched-link"></a></div>
 
-
         <div id="content" class="app-content">
 
             <h1 class="page-header">Dashboard <small>Ticketing Application</small></h1>
@@ -549,9 +548,7 @@
                     </div>
                 </div>
 
-
             </div>
-
 
             <a href="javascript:;" class="btn btn-icon btn-circle btn-theme btn-scroll-to-top" data-toggle="scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
