@@ -156,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="menu-item py-1 active">
+                    <div class="menu-item py-1">
                         <a href="{{ route('admin-request') }}" class="menu-link">
                             <div class="menu-icon">
                                 <i class="fas fa-building"></i>
@@ -243,7 +243,7 @@
                             <td>{{ $depart->priority }}</td>
                             <td class="{{ $depart->status != 1 ? 'text-primary' : 'text-danger' }}">
                                 {{ $depart->status != 1 ? 'Done' : 'Pending' }}
-                                <a href="{{ route('admin-done-request-four', ['value' => $depart->id] ) }}">Change</a>
+                                <a href="{{ route('admin-done-request', ['value' => $depart->id] ) }}">Change</a>
                             </td>
                             <td>{{ \Carbon\Carbon::parse($depart->created_at)->format('l F j Y \a\t H:i:s') }}</td>
                             <td>
@@ -294,7 +294,7 @@
                             <td>{{ $depart->priority }}</td>
                             <td class="{{ $depart->status != 1 ? 'text-primary' : 'text-danger' }}">
                                 {{ $depart->status != 1 ? 'Done' : 'Pending' }}
-                                <a href="{{ route('admin-done-order-four', ['value' => $depart->id] ) }}">Change</a>
+                                <a href="{{ route('admin-done-order', ['value' => $depart->id] ) }}">Change</a>
                             </td>
                             <td>{{ \Carbon\Carbon::parse($depart->created_at)->format('l F j Y \a\t H:i:s') }}</td>
                             <td>
@@ -384,6 +384,7 @@
                 var selectedOption = $(this).val();
 
                 if (selectedOption == 1) {
+
                     $('#concernTableBody').addClass('visually-hidden');
                     $('#jobOrderTableBody').removeClass('visually-hidden');
 
@@ -392,7 +393,9 @@
 
                     $('#concernTableHead').addClass('visually-hidden');
                     $('#jobOrderTableHead').removeClass('visually-hidden');
+
                 } else if (selectedOption == 2) {
+
                     $('#concernTableBody').removeClass('visually-hidden');
                     $('#jobOrderTableBody').addClass('visually-hidden');
 
@@ -401,6 +404,7 @@
 
                     $('#concernTableHead').removeClass('visually-hidden');
                     $('#jobOrderTableHead').addClass('visually-hidden');
+                    
                 }
             });
         });

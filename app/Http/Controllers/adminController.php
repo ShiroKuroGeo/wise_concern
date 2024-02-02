@@ -125,9 +125,13 @@ class adminController extends Controller
             $allYesterdayRequest = WiseRequest::whereDate('created_at', now()->subDay()->toDateString())->get();
             $allYesterdayTicket = wiseticket::whereDate('created_at', now()->subDay()->toDateString())->get();
 
-            //Wise Count all Concern and Ticket Month
+            //Wise Count all 
             $countRequest = WiseRequest::count();
             $countTicket = wiseticket::count();
+
+            //Wise Count all Pending and Done
+            $countAllPending = WiseRequest::where('status', 1)->count() + wiseticket::where('status', 1)->count();
+            $countAllDone = WiseRequest::where('status', 2)->count() + wiseticket::where('status', 2)->count();
 
             return view('admin.dashboard', [
                 //Wise Request Daily
@@ -232,11 +236,16 @@ class adminController extends Controller
                 'countRequest' => $countRequest,
                 'countTicket' => $countTicket,
 
+                //Wise Count all Concern and Ticket Month
+                'countAllPending' => $countAllPending,
+                'countAllDone' => $countAllDone,
+
             ]);
         }
     }
 
-    public function donepending($value){
+    public function donepending($value)
+    {
         $searchWiseTicketStatus = wiseticket::with('wiseticketfiles')->where('status', $value)->get();
         $searchWiseRequestStatus = WiseRequest::with('wiserequestfiles')->where('status', $value)->get();
 
@@ -244,7 +253,6 @@ class adminController extends Controller
             'WiseTicketStatus' => $searchWiseTicketStatus,
             'WiseRequestStatus' => $searchWiseRequestStatus,
         ]);
-
     }
 
     public function doneRequestFour($value)

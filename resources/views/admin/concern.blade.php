@@ -236,8 +236,6 @@
                         </tr>
                     </thead>
 
-                    <!-- admin-done-order -->
-
                     <tbody class="first" id="concernTableBody">
                         @foreach($ticket as $depart)
                         <tr class="odd gradeX">

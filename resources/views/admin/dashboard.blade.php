@@ -185,7 +185,7 @@
                         <div class="stats-icon"><i class="fa fa-users"></i></div>
                         <div class="stats-info">
                             <h4>TOTAL REQUEST</h4>
-                            <p>{{ Count($cebu) + Count($bohol) + Count($makati) + Count($osamiz) + Count($marketing) + Count($human) + Count($accounting) }}</p>
+                            <p>{{ $countRequest }}</p>
                         </div>
                         <div class="stats-link">
                             <a href="{{ route('admin-concern') }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -198,7 +198,7 @@
                         <div class="stats-icon"><i class="fa fa-users"></i></div>
                         <div class="stats-info">
                             <h4>TOTAL JOB</h4>
-                            <p>{{ Count($ticketcebu) + Count($ticketbohol) + Count($ticketMakati) + Count($ticketOsamiz) + Count($ticketMarketing) + Count($ticketHuman) + Count($ticketAccounting)}}</p>
+                            <p>{{ $countTicket }}</p>
                         </div>
                         <div class="stats-link">
                             <a href="{{ route('admin-request') }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -208,10 +208,10 @@
                 
                 <div class="col-xl-3 col-md-6">
                     <div class="widget widget-stats bg-orange">
-                        <div class="stats-icon"><i class="fas fa-calendar-day"></i></div>
+                        <div class="stats-icon"><i class="fas fa-times"></i></div>
                         <div class="stats-info">
                             <h4>Total Daily's Pending</h4>
-                            <p>{{ $dailycountAllPending }}</p>
+                            <p>{{ $countAllPending }}</p>
                         </div>
                         <div class="stats-link">
                             <a href="{{ route('admin-donepending', ['value' => '1']) }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -221,10 +221,10 @@
 
                 <div class="col-xl-3 col-md-6">
                     <div class="widget widget-stats bg-red">
-                        <div class="stats-icon"><i class="fas fa-calendar-day"></i></div>
+                        <div class="stats-icon"><i class="fas fa-check"></i></div>
                         <div class="stats-info">
                             <h4>Total Daily's Done</h4>
-                            <p>{{ $dailycountAllDone }}</p>
+                            <p>{{ $countAllDone }}</p>
                         </div>
                         <div class="stats-link">
                             <a href="{{ route('admin-donepending', ['value' => '2']) }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -436,7 +436,7 @@
                                         <td>{{ Count($ticketAccounting) }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Totals in {{ now()->format('l') }}</td>
+                                        <td>Totals in {{ now()->format('F') }}</td>
                                         <td>{{ Count($cebu) + Count($bohol) + Count($makati) + Count($osamiz) + Count($marketing) + Count($human) + Count($accounting) }}</td>
                                         <td>{{ Count($ticketcebu) + Count($ticketbohol) + Count($ticketMakati) + Count($ticketOsamiz) + Count($ticketMarketing) + Count($ticketHuman) + Count($ticketAccounting)}}</td>
                                     </tr>
@@ -501,7 +501,7 @@
                                         <td>{{ Count($doneticketAccounting) }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Totals in {{ now()->format('ls') }}</td>
+                                        <td>Totals in {{ now()->format('F') }}</td>
                                         <td>{{ Count($donecebu) + Count($donebohol) + Count($doneMakati) + Count($doneOsamiz) + Count($doneMarketing) + Count($doneHuman) + Count($doneAccounting) }}</td>
                                         <td>{{ Count($doneticketcebu) + Count($doneticketbohol) + Count($doneticketMakati) + Count($doneticketOsamiz) + Count($doneticketMarketing) + Count($doneticketHuman) + Count($doneticketAccounting)}}</td>
                                     </tr>
