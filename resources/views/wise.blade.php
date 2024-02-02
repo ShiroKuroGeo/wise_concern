@@ -82,11 +82,31 @@
                     <div class="modal-content text-dark p-5">
                         <div class="panel-body">
                             <div class="form-group row mb-3">
-                                <label class="text-center">Four Season Selection</label>
+                                <div class="text-center">
+                                    <img src="{{ asset('img/logo/wiselogo.png') }}" class="img-fluid w-50" width="10" height="10" alt="">
+                                    <div class="fst-italic mb-5">
+                                        <label class="text-center">Four Season Selection</label>
+                                    </div>
+                                </div>
                                 <div class="col-lg-12 d-flex justify-content-center">
                                     <a class="btn btn-info me-5" href="{{ route('fourseason-request') }}">Concern Slip</a>
                                     <a class="btn btn-primary ms-4" href="{{ route('fourseason-order') }}">Job Order Slip</a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal modal-message fade" id="modalFormError">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content text-dark p-5">
+                        <div class="panel-body">
+                            <div class="form-group row mb-3">
+                                <div class="text-center my-5">
+                                    <span class="fst-normal fw-bold">Account not in the list. Please try again!</span>
+                                </div>
+                                <a href="#" class="btn btn-theme btn-info" data-bs-toggle="modal" data-bs-target="#modalFourSeason">Try Again</a>
                             </div>
                         </div>
                     </div>
@@ -243,11 +263,16 @@
                 dataType: 'json',
                 success: function(response) {
                     $('#modalContent').html(response.message);
-                    if (response.message == 'User not found') {
-                        $('#loadingBtn').html('Check Again');
+                    if (response.message == 400) {
+                        $('#modalFormError').modal('show');
+
+                        $('#modalFourSeason').modal('hide');
                     } else {
                         $('#loadingBtn').addClass('visually-hidden');
                         $('#viewForm').removeClass('visually-hidden');
+                        $('#modalForm').modal('show');
+
+                        $('#modalFourSeason').modal('hide');
                     }
                 },
                 error: function(error) {
