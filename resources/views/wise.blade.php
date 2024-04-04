@@ -176,7 +176,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputEmail1">Select a Branch/Department:</label>
-                                    <select class="form-control form-select" name="department" id="selectedRequest" onchange="navigateToRouteForRequest()">
+                                    <select class="form-control form-select11" name="department" id="selectedRequest" onchange="navigateToRouteForRequest()">
                                         <option selected hidden>Please Select a Branch/Department</option>
                                         <option value="Cebu Sales">Cebu Sales</option>
                                         <option value="Bohol Sales">Bohol Sales</option>
